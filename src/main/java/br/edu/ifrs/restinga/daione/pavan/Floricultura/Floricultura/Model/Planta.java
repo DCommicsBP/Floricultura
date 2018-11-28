@@ -4,28 +4,27 @@
  * and open the template in the editor.
  */
 package br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author daione
  */
 @Entity
-public class Usuario {
+public class Planta {
     @Id
     private int id; 
-    private String nome;
-    @JsonIgnore
-    private String senha;
-    private String login; 
+    private String nome; 
+    private double valor;
+    private int quantidadeDisponivel; 
 
     public int getId() {
         return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -38,19 +37,21 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getSenha() {
-        return senha;
+    public double getValor() {
+        return valor;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
-    public String getLogin() {
-        return login;
+    public int getQuantidadeDisponivel() {
+        return quantidadeDisponivel;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setQuantidadeDisponivel(int quantidadeDisponivel) {
+        this.quantidadeDisponivel = quantidadeDisponivel;
     }
+    
+    
 }

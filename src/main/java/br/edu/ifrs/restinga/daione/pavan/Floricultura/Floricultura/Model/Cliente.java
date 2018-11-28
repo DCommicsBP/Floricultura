@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,27 +6,28 @@
  */
 package br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author daione
  */
 @Entity
-public class Usuario {
+public class Cliente {
     @Id
     private int id; 
-    private String nome;
-    @JsonIgnore
-    private String senha;
-    private String login; 
+    private String nome; 
+    private String sobrenome; 
+    @OneToMany
+    private List<Contato> contatos; 
 
     public int getId() {
         return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -38,19 +40,22 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getSobrenome() {
+        return sobrenome;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
-    public String getLogin() {
-        return login;
+    public List<Contato> getContatos() {
+        return contatos;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setContatos(List<Contato> contatos) {
+        this.contatos = contatos;
     }
+    
+    
+    
 }
