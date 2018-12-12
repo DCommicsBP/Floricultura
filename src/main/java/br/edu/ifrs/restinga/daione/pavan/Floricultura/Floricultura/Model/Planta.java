@@ -19,8 +19,9 @@ public class Planta {
     private int id; 
     private String nome; 
     private double valor;
-    private int quantidadeDisponivel; 
-
+    private int quantidade;     
+    private boolean isVisible; 
+    
     public int getId() {
         return id;
     }
@@ -46,11 +47,11 @@ public class Planta {
     }
 
     public int getQuantidadeDisponivel() {
-        return quantidadeDisponivel;
+        return quantidade;
     }
 
     public void setQuantidadeDisponivel(int quantidadeDisponivel) {
-        this.quantidadeDisponivel = quantidadeDisponivel;
+        this.quantidade = quantidadeDisponivel;
     }
     
     

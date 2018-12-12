@@ -21,7 +21,18 @@ public class Usuario {
     @JsonIgnore
     private String senha;
     private String login; 
+    private boolean isVisible; 
 
+    public boolean isIsVisible() {
+        return isVisible;
+    }
+
+    public void setIsVisible(boolean isVisible) {
+        this.isVisible = isVisible;
+    }
+    
+    
+    
     public int getId() {
         return id;
     }

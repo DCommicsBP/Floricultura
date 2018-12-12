@@ -13,11 +13,15 @@ import javax.persistence.OneToMany;
  *
  * @author daione
  */
+@Entity
 public class Venda {
+    @Id
     private int id; 
     @OneToMany
     private List<Planta> plantas; 
+    @OneToMany
     private Cliente cliente; 
+    @OneToMany
     private Usuario usuario;
 
     public int getId() {

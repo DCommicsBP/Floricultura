@@ -20,9 +20,10 @@ public class Cliente {
     @Id
     private int id; 
     private String nome; 
-    private String sobrenome; 
-    @OneToMany
-    private List<Contato> contatos; 
+    private String endereco; 
+    private String telefone;
+    private String email;
+    private boolean isVisible; 
 
     public int getId() {
         return id;
@@ -40,22 +41,38 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    public List<Contato> getContatos() {
-        return contatos;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setContatos(List<Contato> contatos) {
-        this.contatos = contatos;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isIsVisible() {
+        return isVisible;
+    }
+
+    public void setIsVisible(boolean isVisible) {
+        this.isVisible = isVisible;
     }
     
     
-    
+
 }
