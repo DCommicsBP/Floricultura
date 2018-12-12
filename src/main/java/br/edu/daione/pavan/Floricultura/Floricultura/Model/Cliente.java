@@ -3,25 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model;
-import java.util.List;
+package br.edu.daione.pavan.Floricultura.Floricultura.Model;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
- * @author daione
+ * @author daione.pavan
  */
 @Entity
-public class Planta {
+public class Cliente {
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; 
     private String nome; 
-    private double valor;
-    private int quantidade;     
-    private boolean isVisible; 
-    
+    private String telefone; 
+    private String email;
+
     public int getId() {
         return id;
     }
@@ -38,21 +40,23 @@ public class Planta {
         this.nome = nome;
     }
 
-    public double getValor() {
-        return valor;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public int getQuantidadeDisponivel() {
-        return quantidade;
+    public String getEmail() {
+        return email;
     }
 
-    public void setQuantidadeDisponivel(int quantidadeDisponivel) {
-        this.quantidade = quantidadeDisponivel;
+    public void setEmail(String email) {
+        this.email = email;
     }
+    
+    
     
     
 }

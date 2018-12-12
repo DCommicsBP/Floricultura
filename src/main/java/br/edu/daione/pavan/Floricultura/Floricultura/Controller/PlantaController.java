@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Controller;
-import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.DAO.PlantasDAO;
-import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model.Planta;
+package br.edu.daione.pavan.Floricultura.Floricultura.Controller;
+
+import br.edu.daione.pavan.Floricultura.Floricultura.DAO.PlantaDAO;
+import br.edu.daione.pavan.Floricultura.Floricultura.Model.Planta;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,17 +16,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
 /**
  *
- * @author daione
+ * @author daione.pavan
  */
+
 @RestController
 public class PlantaController {
      @Autowired
-    PlantasDAO pDAO;
+    PlantaDAO pDAO;
 
     @RequestMapping(path = "/planta/", method = RequestMethod.GET)
-    public Iterable<Planta> Listar() {
+    public Iterable<Planta> listar() {
         Iterable<Planta> plantas = pDAO.findAll();
         
         return plantas;
@@ -52,7 +55,7 @@ public class PlantaController {
     }
     
     // 4 - exclui uma planta
-    @RequestMapping(path = "/usuario/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/planta/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public void apagar(@PathVariable int id) {
         if (pDAO.existsById(id)) {
@@ -60,7 +63,7 @@ public class PlantaController {
         }
     }
     // 5 - Edita uma planta
-       @RequestMapping(path = "/bibliotecarios/{id}", method = RequestMethod.PUT)
+       @RequestMapping(path = "/planta/{id}", method = RequestMethod.PUT)
         public void atualizaBibliotecario(@PathVariable Integer id, @RequestBody Planta planta) {
         if (pDAO.existsById(id)) {
             planta.setId(id);

@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Controller;
+package br.edu.daione.pavan.Floricultura.Floricultura.Controller;
 
-import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.DAO.ClientesDAO;
-import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model.Cliente;
-import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model.Usuario;
+import br.edu.daione.pavan.Floricultura.Floricultura.DAO.ClienteDAO;
+import br.edu.daione.pavan.Floricultura.Floricultura.Model.Cliente;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author daione
+ * @author daione.pavan
  */
 @RestController
 public class ClientesController {
 
     @Autowired
-    ClientesDAO cDAO;
+    ClienteDAO cDAO;
 
     @RequestMapping(path = "/cliente/", method = RequestMethod.GET)
     public Iterable<Cliente> ListarAutores() {
@@ -47,7 +41,7 @@ public class ClientesController {
     }
 
     // 3 - carrega um cliente
-    @RequestMapping(path = "/usuarios/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/cliente/{id}", method = RequestMethod.GET)
     public Optional<Cliente> getUsuario(@PathVariable Integer id) {
         Optional<Cliente> c = cDAO.findById(id);
         if (c != null) {
@@ -66,7 +60,7 @@ public class ClientesController {
         }
     }
     // 5 - Edita um cliente
-       @RequestMapping(path = "/bibliotecarios/{id}", method = RequestMethod.PUT)
+       @RequestMapping(path = "/cliente/{id}", method = RequestMethod.PUT)
         public void atualizaBibliotecario(@PathVariable Integer id, @RequestBody Cliente cliente) {
         if (cDAO.existsById(id)) {
             cliente.setId(id);
