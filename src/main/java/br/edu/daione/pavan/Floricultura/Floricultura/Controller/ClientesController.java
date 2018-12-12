@@ -23,7 +23,7 @@ public class ClientesController {
     ClienteDAO cDAO;
 
     @RequestMapping(path = "/cliente/", method = RequestMethod.GET)
-    public Iterable<Cliente> ListarAutores() {
+    public Iterable<Cliente> listarClientes() {
         Iterable<Cliente> clientes = cDAO.findAll();
         if (clientes == null) {
             //throw new ERROR400("Não foi possivel encontrar um registro"); 
@@ -42,7 +42,7 @@ public class ClientesController {
 
     // 3 - carrega um cliente
     @RequestMapping(path = "/cliente/{id}", method = RequestMethod.GET)
-    public Optional<Cliente> getUsuario(@PathVariable Integer id) {
+    public Optional<Cliente> getCliente(@PathVariable Integer id) {
         Optional<Cliente> c = cDAO.findById(id);
         if (c != null) {
             return c;
@@ -61,7 +61,7 @@ public class ClientesController {
     }
     // 5 - Edita um cliente
        @RequestMapping(path = "/cliente/{id}", method = RequestMethod.PUT)
-        public void atualizaBibliotecario(@PathVariable Integer id, @RequestBody Cliente cliente) {
+        public void atualiza(@PathVariable Integer id, @RequestBody Cliente cliente) {
         if (cDAO.existsById(id)) {
             cliente.setId(id);
             cDAO.save(cliente);
