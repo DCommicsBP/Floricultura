@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author daione.pavan
  */
 @RestController
-public class ClientesController {
+public class ClienteController {
 
     @Autowired
     ClienteDAO cDAO;

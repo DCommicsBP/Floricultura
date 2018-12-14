@@ -55,7 +55,7 @@ public class UsuarioController {
         }
     }
     // 5 - Edita um usuario
-       @RequestMapping(path = "/bibliotecarios/{id}", method = RequestMethod.PUT)
+       @RequestMapping(path = "/usuario/{id}", method = RequestMethod.PUT)
         public void atualizar(@PathVariable Integer id, @RequestBody Usuario usuario) {
         if (uDAO.existsById(id)) {
             usuario.setId(id);
