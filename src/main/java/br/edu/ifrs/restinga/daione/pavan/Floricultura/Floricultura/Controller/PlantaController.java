@@ -40,6 +40,7 @@ public class PlantaController {
         p.setNome(planta.getNome());
         p.setQuantidade(planta.getQuantidade());
         p.setValor(planta.getValor());
+        p.setTipo(planta.getTipo()); 
         pDAO.save(p);
         return null;
     }
