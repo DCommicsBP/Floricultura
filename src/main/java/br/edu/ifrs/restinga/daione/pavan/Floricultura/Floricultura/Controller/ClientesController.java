@@ -11,6 +11,7 @@ import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model.Usuario
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author daione
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class ClientesController {
 
     @Autowired
@@ -52,7 +54,6 @@ public class ClientesController {
         Optional<Cliente> c = cDAO.findById(id);
         if (c != null) {
             return c;
-
         }
         return c;
     }
