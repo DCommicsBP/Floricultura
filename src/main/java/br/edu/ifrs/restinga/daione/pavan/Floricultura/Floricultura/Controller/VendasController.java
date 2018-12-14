@@ -45,11 +45,12 @@ public class VendasController {
         Usuario u = new Usuario(); 
         Cliente c = new Cliente(); 
         
+        
          for(Planta plan: venda.getPlantas()){
              Planta planta = new Planta(); 
              planta.setId(plan.getId());
              planta.setNome(plan.getNome());
-             planta.setQuantidadeDisponivel(plan.getQuantidadeDisponivel());
+             planta.setQuantidade(plan.getQuantidade());
              planta.setValor(plan.getValor());
              p.add(plan); 
          }

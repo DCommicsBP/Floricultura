@@ -24,6 +24,8 @@ public class Planta {
     private double valor;
     private int quantidade;     
     private boolean isVisible; 
+    private String tipo; 
+    
     
     public int getId() {
         return id;
@@ -49,12 +51,29 @@ public class Planta {
         this.valor = valor;
     }
 
-    public int getQuantidadeDisponivel() {
+  
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidadeDisponivel(int quantidadeDisponivel) {
-        this.quantidade = quantidadeDisponivel;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public boolean isIsVisible() {
+        return isVisible;
+    }
+
+    public void setIsVisible(boolean isVisible) {
+        this.isVisible = isVisible;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
     
