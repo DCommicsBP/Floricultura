@@ -39,8 +39,8 @@ public class PlantaController {
     public Optional<Planta> inserir(@RequestBody Planta planta) {
         Planta p = new Planta();
         p.setNome(planta.getNome());
-        p.setQuantidadeDisponivel(planta.getQuantidadeDisponivel());
-        p.setValor(planta.getQuantidadeDisponivel());
+        p.setQuantidade(planta.getQuantidade());
+        p.setValor(planta.getValor());
         pDAO.save(p);
         return null;
     }

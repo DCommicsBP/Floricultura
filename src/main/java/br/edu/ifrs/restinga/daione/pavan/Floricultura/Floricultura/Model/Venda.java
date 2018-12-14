@@ -17,9 +17,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class Venda {
     @Id
-    
-
-
     private int id; 
     @OneToMany
     private List<Planta> plantas; 
