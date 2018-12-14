@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -16,12 +17,15 @@ import javax.persistence.OneToMany;
 @Entity
 public class Venda {
     @Id
+    
+
+
     private int id; 
     @OneToMany
     private List<Planta> plantas; 
-    @OneToMany
+    @OneToOne
     private Cliente cliente; 
-    @OneToMany
+    @OneToOne
     private Usuario usuario;
 
     public int getId() {

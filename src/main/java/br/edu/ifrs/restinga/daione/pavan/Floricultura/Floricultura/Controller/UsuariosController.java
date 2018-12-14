@@ -28,7 +28,7 @@ public class UsuariosController {
      @Autowired
     UsuariosDAO uDAO;
 
-    @RequestMapping(path = "/cliente/", method = RequestMethod.GET)
+    @RequestMapping(path = "/usuario/", method = RequestMethod.GET)
     public Iterable<Usuario> ListarAutores() {
         Iterable<Usuario> clientes = uDAO.findAll();
         
@@ -36,7 +36,7 @@ public class UsuariosController {
     }
 
     // 2 - insere novo usuario
-    @RequestMapping(path = "/cliente/", method = RequestMethod.POST)
+    @RequestMapping(path = "/usuario/", method = RequestMethod.POST)
     public Optional<Cliente> inserir(@RequestBody Usuario usuario) {
         Usuario u = new Usuario();
         u.setId(0);
@@ -45,7 +45,7 @@ public class UsuariosController {
     }
 
     // 3 - carrega um usuario
-    @RequestMapping(path = "/usuarios/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/usuario/{id}", method = RequestMethod.GET)
     public Optional<Usuario> getUsuario(@PathVariable Integer id) {
         Optional<Usuario> u = uDAO.findById(id);
         if (u != null) {
@@ -64,7 +64,7 @@ public class UsuariosController {
         }
     }
     // 5 - Edita um usuario
-       @RequestMapping(path = "/bibliotecarios/{id}", method = RequestMethod.PUT)
+       @RequestMapping(path = "/usuario/{id}", method = RequestMethod.PUT)
         public void atualizaBibliotecario(@PathVariable Integer id, @RequestBody Usuario usuario) {
         if (uDAO.existsById(id)) {
             usuario.setId(id);

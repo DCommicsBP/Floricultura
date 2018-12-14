@@ -6,6 +6,8 @@
 package br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -16,6 +18,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Planta {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; 
     private String nome; 
     private double valor;

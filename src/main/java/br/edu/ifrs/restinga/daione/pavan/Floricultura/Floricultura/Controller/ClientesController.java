@@ -47,7 +47,7 @@ public class ClientesController {
     }
 
     // 3 - carrega um cliente
-    @RequestMapping(path = "/usuarios/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/cliente/{id}", method = RequestMethod.GET)
     public Optional<Cliente> getUsuario(@PathVariable Integer id) {
         Optional<Cliente> c = cDAO.findById(id);
         if (c != null) {
@@ -66,7 +66,7 @@ public class ClientesController {
         }
     }
     // 5 - Edita um cliente
-       @RequestMapping(path = "/bibliotecarios/{id}", method = RequestMethod.PUT)
+       @RequestMapping(path = "/cliente/{id}", method = RequestMethod.PUT)
         public void atualizaBibliotecario(@PathVariable Integer id, @RequestBody Cliente cliente) {
         if (cDAO.existsById(id)) {
             cliente.setId(id);

@@ -35,8 +35,10 @@ public class PlantaController {
     @RequestMapping(path = "/planta/", method = RequestMethod.POST)
     public Optional<Planta> inserir(@RequestBody Planta planta) {
         Planta p = new Planta();
-        p.setId(0);
-        p = pDAO.save(planta);
+        p.setNome(planta.getNome());
+        p.setQuantidadeDisponivel(planta.getQuantidadeDisponivel());
+        p.setValor(planta.getQuantidadeDisponivel());
+        pDAO.save(p);
         return null;
     }
 
@@ -52,7 +54,7 @@ public class PlantaController {
     }
     
     // 4 - exclui uma planta
-    @RequestMapping(path = "/usuario/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/planta/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public void apagar(@PathVariable int id) {
         if (pDAO.existsById(id)) {
@@ -60,7 +62,7 @@ public class PlantaController {
         }
     }
     // 5 - Edita uma planta
-       @RequestMapping(path = "/bibliotecarios/{id}", method = RequestMethod.PUT)
+       @RequestMapping(path = "/planta/{id}", method = RequestMethod.PUT)
         public void atualizaBibliotecario(@PathVariable Integer id, @RequestBody Planta planta) {
         if (pDAO.existsById(id)) {
             planta.setId(id);
