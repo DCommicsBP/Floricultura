@@ -38,8 +38,10 @@ public class PlantaController {
     @RequestMapping(path = "/planta/", method = RequestMethod.POST)
     public Optional<Planta> inserir(@RequestBody Planta planta) {
         Planta p = new Planta();
-        p.setId(0);
-        p = pDAO.save(planta);
+        p.setNome(planta.getNome());
+        p.setQuantidadeDisponivel(planta.getQuantidadeDisponivel());
+        p.setValor(planta.getQuantidadeDisponivel());
+        pDAO.save(p);
         return null;
     }
 

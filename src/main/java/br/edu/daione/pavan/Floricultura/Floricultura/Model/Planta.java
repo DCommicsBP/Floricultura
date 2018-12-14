@@ -17,8 +17,8 @@ import javax.persistence.Id;
 @Entity
 public class Planta {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)   
-    int id; 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id; 
     private String nome; 
     private double valor; 
     private int quantidade; 

@@ -38,7 +38,7 @@ public class UsuarioController {
     }
 
     // 3 - carrega um usuario
-    @RequestMapping(path = "/usuarios/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/usuario/{id}", method = RequestMethod.GET)
     public Optional<Usuario> getUsuario(@PathVariable Integer id) {
         Optional<Usuario> u = uDAO.findById(id);
         if (u != null) {

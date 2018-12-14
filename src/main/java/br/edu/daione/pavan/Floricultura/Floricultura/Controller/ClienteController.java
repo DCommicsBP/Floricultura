@@ -42,7 +42,7 @@ public class ClienteController {
 
     // 3 - carrega um cliente
     @RequestMapping(path = "/cliente/{id}", method = RequestMethod.GET)
-    public Optional<Cliente> getCliente(@PathVariable Integer id) {
+    public Optional<Cliente> getUsuario(@PathVariable Integer id) {
         Optional<Cliente> c = cDAO.findById(id);
         if (c != null) {
             return c;

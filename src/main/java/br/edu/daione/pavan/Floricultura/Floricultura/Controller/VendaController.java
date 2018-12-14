@@ -41,14 +41,43 @@ public class VendaController {
 
     // 2 - insere nova venda
     @RequestMapping(path = "/venda/", method = RequestMethod.POST)
-    public Optional<Usuario> inserir(@RequestBody Venda venda) {
+    public Optional<Venda> inserir(@RequestBody Venda venda) {
+        List<Planta> p = new ArrayList<Planta>(); 
+        Usuario u = new Usuario(); 
+        Cliente c = new Cliente(); 
+        
+         for(Planta plan: venda.getPlantas()){
+             Planta planta = new Planta(); 
+             planta.setId(plan.getId());
+             planta.setNome(plan.getNome());
+             planta.setQuantidadeDisponivel(plan.getQuantidadeDisponivel());
+             planta.setValor(plan.getValor());
+             p.add(plan); 
+         }
+         u.setId(venda.getUsuario().getId());
+         u.setNome(venda.getUsuario().getNome());
+         u.setIsVisible(venda.getUsuario().isIsVisible());
+         u.setLogin(venda.getUsuario().getLogin());
+         u.setSenha(venda.getUsuario().getSenha());
+         
+         c.setEmail(venda.getCliente().getEmail());
+         c.setEndereco(venda.getCliente().getEndereco());
+         c.setId(venda.getCliente().getId());
+         c.setNome(venda.getCliente().getNome());
+         c.setIsVisible(venda.getCliente().isIsVisible());
+         c.setTelefone(venda.getCliente().getTelefone());
+         
         Venda v = new Venda();
+        v.setCliente(c);
+        v.setPlantas(p);
+        v.setUsuario(u);
         v.setId(0);
+        
         v = vDAO.save(venda);
         return null;
     }
 
-    // 3 - carrega venda
+    // 3 - carrega uma venda
     @RequestMapping(path = "/venda/{id}", method = RequestMethod.GET)
     public Optional<Venda> getUsuario(@PathVariable Integer id) {
         Optional<Venda> v = vDAO.findById(id);
@@ -57,7 +86,8 @@ public class VendaController {
         }
         return null;
     }
-    // 4 - exclui uma  venda
+    
+    // 4 - exclui uma venda
     @RequestMapping(path = "/venda/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public void apagar(@PathVariable int id) {

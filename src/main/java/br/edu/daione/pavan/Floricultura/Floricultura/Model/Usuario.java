@@ -15,6 +15,7 @@ import javax.persistence.Id;
  * @author daione.pavan
  */
 @Entity
+   
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)        
