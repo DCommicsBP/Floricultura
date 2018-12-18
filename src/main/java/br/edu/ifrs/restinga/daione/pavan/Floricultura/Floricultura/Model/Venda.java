@@ -1,15 +1,17 @@
 
 package br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
- *s
  * @author daione
  */
 @Entity
@@ -17,13 +19,43 @@ public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; 
-    @OneToMany
+    @ManyToMany
     private List<Planta> plantas; 
-    @OneToOne
+    @ManyToOne
     private Cliente cliente; 
-    @OneToOne
+    @ManyToOne
     private Usuario usuario;
 
+    
+    private Date compra; 
+    private Date dataPrevista; 
+    private Date entrega; 
+
+    public Date getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Date compra) {
+        this.compra = compra;
+    }
+
+    public Date getDataPrevista() {
+        return dataPrevista;
+    }
+
+    public void setDataPrevista(Date dataPrevista) {
+        this.dataPrevista = dataPrevista;
+    }
+
+    public Date getEntrega() {
+        return entrega;
+    }
+
+    public void setEntrega(Date entrega) {
+        this.entrega = entrega;
+    }
+    
+    
     public int getId() {
         return id;
     }

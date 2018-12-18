@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author daione
- */
+ * @author daione   
+ */         
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class UsuariosController {
     
      @Autowired

@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -24,7 +26,19 @@ public class Planta {
     private double valor;
     private int quantidade;     
     private boolean isVisible; 
-    private String tipo; 
+    private String tipo;
+    @ManyToMany
+    private List<Venda> Vendas;
+    
+    @JsonIgnore
+    public List<Venda> getVendas() {
+        return Vendas;
+    }
+
+    public void setVendas(List<Venda> Vendas) {
+        this.Vendas = Vendas;
+    }
+    
     
     
     public int getId() {

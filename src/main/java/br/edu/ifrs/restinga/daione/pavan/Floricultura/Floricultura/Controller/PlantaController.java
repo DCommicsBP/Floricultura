@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author daione
  */
 @RestController
- @CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class PlantaController {
      @Autowired
     PlantasDAO pDAO;

@@ -6,10 +6,12 @@
 package br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,7 +26,19 @@ public class Usuario {
     private String nome;
     @JsonIgnore
     private String senha;
-    private String login; 
+    private String login;
+    @OneToMany
+    private List<Venda> vendas; 
+
+    public List<Venda> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
+    }
+    
+    
     private boolean isVisible; 
 
     public boolean isIsVisible() {

@@ -10,7 +10,11 @@ import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model.Cliente
 import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model.Planta;
 import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model.Usuario;
 import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Model.Venda;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +26,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
 /**
- *
  * @author daione
  */
-@CrossOrigin(origins = "http://localhost:3000")
+
 @RestController
+@CrossOrigin
 public class VendasController {
      @Autowired
     VendasDAO vDAO;
@@ -39,16 +42,14 @@ public class VendasController {
         
         return venda;
     }
-
     // 2 - insere nova venda
     @RequestMapping(path = "/venda/", method = RequestMethod.POST)
     public Optional<Venda> inserir(@RequestBody Venda venda) {
         List<Planta> p = new ArrayList<Planta>(); 
         Usuario u = new Usuario(); 
         Cliente c = new Cliente(); 
-        
-        
-         for(Planta plan: venda.getPlantas()){
+       
+             for(Planta plan: venda.getPlantas()){
              Planta planta = new Planta(); 
              planta.setId(plan.getId());
              planta.setNome(plan.getNome());
@@ -75,13 +76,21 @@ public class VendasController {
         v.setCliente(c);
         v.setPlantas(p);
         v.setUsuario(u);
-        v.setId(0);
+        v.setId(0); 
+         Calendar calendar = Calendar.getInstance();
+         calendar.add(Calendar.DAY_OF_MONTH, 7);        
+            
+        v.setEntrega(new Date(System.currentTimeMillis()));
+        v.setDataPrevista(calendar.getTime());
+        v.setCompra(new Date(System.currentTimeMillis()));
+
         
-        v = vDAO.save(venda);
+        vDAO.save(v);
         return null;
     }
 
     // 3 - carrega uma venda
+    
     @RequestMapping(path = "/venda/{id}", method = RequestMethod.GET)
     public Optional<Venda> getUsuario(@PathVariable Integer id) {
         Optional<Venda> v = vDAO.findById(id);
@@ -106,9 +115,32 @@ public class VendasController {
             venda.setId(id);
             vDAO.save(venda);
         } 
-
-    }    
-
-
+    }
+        // 6 - Carrega pedidos pendentes
+          @RequestMapping(path = "/venda/pendente/", method = RequestMethod.GET)
+    public List<Venda> listarVendasPendentes() {
+        Iterable<Venda> venda = vDAO.findAll();
+        List<Venda> pendentes = new ArrayList<>(); 
+        for(Venda v :venda){
+            if(v.getEntrega().equals(v.getCompra())){
+                pendentes.add(v); 
+            }
+            
+        }
+        
+        return pendentes;
+    }
+        // 6 - Carrega pedidos pendentes
+          @RequestMapping(path = "/venda/completas/", method = RequestMethod.GET)
+    public List<Venda> listarVendasCompletas() {
+        Iterable<Venda> venda = vDAO.findAll();
+        List<Venda> pendentes = new ArrayList<>(); 
+        for(Venda v :venda){
+            if(!v.getEntrega().equals(v.getCompra())){
+                pendentes.add(v); 
+            }
+        }
+        return pendentes;
+    }
     
 }

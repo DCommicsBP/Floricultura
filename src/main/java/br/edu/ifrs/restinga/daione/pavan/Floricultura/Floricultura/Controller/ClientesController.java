@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author daione
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class ClientesController {
 
     @Autowired
@@ -42,7 +42,7 @@ public class ClientesController {
     // 2 - insere novo cliente
     @RequestMapping(path = "/cliente/", method = RequestMethod.POST)
     public Optional<Cliente> inserir(@RequestBody Cliente cliente) {
-        Cliente c = new Cliente();
+            Cliente c = new Cliente();
         c.setId(0);
         c = cDAO.save(cliente);
         return null;

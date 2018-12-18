@@ -21,13 +21,25 @@ import javax.persistence.OneToMany;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; 
+    private int id;     
     private String nome; 
     private String endereco; 
     private String telefone;
     private String email;
     private boolean isVisible; 
+    
+    @OneToMany
+    private List<Venda> vendas; 
 
+    public List<Venda> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
+    }
+
+    
     public int getId() {
         return id;
     }
