@@ -19,18 +19,23 @@ public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; 
+    
     @ManyToMany
     private List<Planta> plantas; 
+    
     @ManyToOne
     private Cliente cliente; 
-    @ManyToOne
-    private Usuario usuario;
-
     
+    @ManyToOne  
+    private Usuario usuario;
+    private String pagamento; 
+    private double valorTotal;
+    private int quantidade; 
     private Date compra; 
     private Date dataPrevista; 
     private Date entrega; 
 
+    
     public Date getCompra() {
         return compra;
     }
@@ -86,6 +91,30 @@ public class Venda {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(String pagamento) {
+        this.pagamento = pagamento;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
     
     

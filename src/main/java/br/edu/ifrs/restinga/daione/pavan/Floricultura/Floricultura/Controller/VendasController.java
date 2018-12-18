@@ -48,17 +48,19 @@ public class VendasController {
         List<Planta> p = new ArrayList<Planta>(); 
         Usuario u = new Usuario(); 
         Cliente c = new Cliente(); 
-       
+       double total = 0; 
              for(Planta plan: venda.getPlantas()){
              Planta planta = new Planta(); 
              planta.setId(plan.getId());
              planta.setNome(plan.getNome());
-             planta.setQuantidade(plan.getQuantidade());
+             planta.setQuantidade(venda.getQuantidade());
              planta.setValor(plan.getValor());
              planta.setTipo(plan.getTipo());
              
              p.add(plan); 
          }
+         
+         
          u.setId(venda.getUsuario().getId());
          u.setNome(venda.getUsuario().getNome());
          u.setIsVisible(venda.getUsuario().isIsVisible());
@@ -77,6 +79,8 @@ public class VendasController {
         v.setPlantas(p);
         v.setUsuario(u);
         v.setId(0); 
+        v.setPagamento(venda.getPagamento());
+        // v.setValorTotal(total)
          Calendar calendar = Calendar.getInstance();
          calendar.add(Calendar.DAY_OF_MONTH, 7);        
             
