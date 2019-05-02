@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.Controller;
 
 import br.edu.ifrs.restinga.daione.pavan.Floricultura.Floricultura.DAO.VendasDAO;
@@ -34,7 +30,7 @@ public class VendasController {
     VendasDAO vDAO;
 
     @RequestMapping(path = "/venda/", method = RequestMethod.GET)
-    public Iterable<Venda> ListarAutores() {
+    public Iterable<Venda> listarVendas() {
         Iterable<Venda> venda = vDAO.findAll();
         
         return venda;
